@@ -1,0 +1,26 @@
+Readme:
+
+1 - Install all the dependencies
+	* flask_jwt mainly at this point
+2 - Execute in the command line:
+	> python -c 'import run; run.start_stuff()'
+
+3 - Execute in the command line:
+	> curl -POST http://localhost:9878/auth -H "Content-Type:application/json" -d '{"username":"user1", "password": "abcxyz"}'
+
+	You will get a __KEY__.
+
+Now try:
+
+	curl -X GET --header 'Accept: application/json' 'http://localhost:9878/api/stuff'
+
+You should get a 401 error
+
+But if you do (replace __KEY__ with your key)
+
+	curl -X GET --header 'Accept: application/json' --header 'Authorization: JWT __KEY__' 'http://localhost:9878/api/stuff'
+
+you should get some good good sugar. +, you'll get the user in the console. 
+
+
+Have fun :)
