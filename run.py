@@ -5,7 +5,14 @@ from authentication import authenticate, identity
 from flask_jwt import JWT, jwt_required, current_identity
 import os
 
-connexion.api.SWAGGER_UI_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'swagger-ui-mod')
+#connexion.api.SWAGGER_UI_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'swagger-ui-mod')
+
+app = connexion.App(
+    __name__,
+    specification_dir=os.path.join(os.path.dirname(os.path.realpath(__file__)), 'swagger-ui-mod')
+
+)
+
 
 def start_stuff():
 	logging.basicConfig(level=logging.ERROR)
